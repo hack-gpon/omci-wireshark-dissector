@@ -110,11 +110,11 @@ local test_message_name = {}
 local test_message_name_meta = {
 	__index = function(t, k)
 		if k >= 0 and k <= 6 then
-			return "Reserved for future use"
+			return "Reserved for future use (" .. k .. ")"
 		elseif k == 7 then
 			return "Self test"
 		elseif k > 7 and k <=255 then 
-			return "Vendor specific" 
+			return "Vendor specific (" .. k .. ")" 
 		else
 			return "***ERROR: Not a Test ID*** (" .. k .. ")"
 		end
@@ -126,13 +126,13 @@ local mt2 = {
   __index = function(t2, k)   
 	local returntable = {}
 	if k >= 172 and k <= 239 then
-		returntable.me_class_name= "Reserved for future B-PON managed entities"
+		returntable.me_class_name= "Reserved for future B-PON managed entities (" .. k .. ")"
 	elseif k >= 240 and k <= 255 then
-		returntable.me_class_name= "Reserved for vendor-specific managed entities"
+		returntable.me_class_name= "Reserved for vendor-specific managed entities (" .. k .. ")"
    	elseif k >= 343 and k <= 65279 then 
-		returntable.me_class_name= "Reserved for future standardization" 
+		returntable.me_class_name= "Reserved for future standardization (" .. k .. ")"
 	elseif k >= 65280 and k <= 65535 then 
-		returntable.me_class_name= "Reserved for vendor-specific use"
+		returntable.me_class_name= "Reserved for vendor-specific use (" .. k .. ")"
 	else
 		returntable.me_class_name= "***TBD*** (" .. k .. ")"
     end
