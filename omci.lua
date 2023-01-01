@@ -192,6 +192,17 @@ local omci_def = {
 	{attname="PPPoE Filter",			length=1, setbycreate=false},
 	{attname="Power Control",			length=1, setbycreate=false}},
 
+[14] = { me_class_name ="Interworking VCC termination point",
+		 {attname="VCI value",			length=2, setbycreate=true},
+		 {attname="VP network CTP connectivity pointer",			length=2, setbycreate=true},
+		 {attname="Deprecated 1",			length=1, setbycreate=true},
+		 {attname="Deprecated 2",			length=2, setbycreate=true},
+		 {attname="AAL5 profile pointer",			length=2, setbycreate=true},
+		 {attname="Deprecated 3",			length=2, setbycreate=true},
+		 {attname="AAL loopback configuration",			length=1, setbycreate=false},
+		 {attname="PPTP counter",			length=1, setbycreate=false},
+		 {attname="Operational state",			length=1, setbycreate=false}},
+
 [24] = { me_class_name = "Ethernet PM History Data",
 	{ attname="Interval End Time", length=1, setbycreate=false },
 	{ attname="Threshold Data 1/2 Id", length=2, setbycreate=true },
@@ -225,6 +236,16 @@ local omci_def = {
 	{ attname="Unknown MAC address discard", length=1, setbycreate=true },
 	{ attname="MAC learning depth", length=1, setbycreate=true }},
 
+[46] = { me_class_name = "MAC bridge configuration data",
+		 { attname="Bridge MAC address", length=6, setbycreate=false },
+		 { attname="Bridge priority", length=2, setbycreate=false },
+		 { attname="Designated root", length=8, setbycreate=false },
+		 { attname="Root path cost", length=4, setbycreate=false },
+		 { attname="Bridge port count", length=1, setbycreate=false },
+		 { attname="Root port num", length=1, setbycreate=false },
+		 { attname="Hello time", length=2, setbycreate=false },
+		 { attname="Forward delay", length=2, setbycreate=false }},
+
 [47] = { me_class_name = "MAC bridge port configuration data",
 	{ attname="Bridge id pointer", length=2, setbycreate=true },
 	{ attname="Port num", length=1, setbycreate=true },
@@ -246,6 +267,9 @@ local omci_def = {
 [49] = { me_class_name = "MAC bridge port filter table data",
 	{ attname="MAC filter table", length=8, setbycreate=false }},
 
+[50] = { me_class_name = "MAC bridge port bridge table data",
+		 { attname="Bridge table", length=8, setbycreate=false}},
+
 [51] = { me_class_name = "MAC Bridge PM History Data",
 	{ attname="Interval end time", length=1, setbycreate=false },
 	{ attname="Threshold data 1/2 id", length=2, setbycreate=true },
@@ -259,6 +283,12 @@ local omci_def = {
 	{ attname="MTU exceeded discard counter", length=4, setbycreate=false },	
 	{ attname="Received frame counter", length=4, setbycreate=false },	
 	{ attname="Received and discarded counter", length=4, setbycreate=false }},
+
+[55] = { me_class_name = "**TBD** Voice PM history data" },
+
+[66] = { me_class_name = "**TBD** AAL2 SSCS protocol monitoring history data" },
+
+[67] = { me_class_name = "**TBD** IP port configuration data" },
 
 [79] = { me_class_name = "MAC bridge port filter preassign table",
 	{ attname="IPv4 multicast filtering", length=1, setbycreate=false },
@@ -325,6 +355,8 @@ local omci_def = {
 	{attname="OLT vendor id",					length=4,  setbycreate=false},
 	{attname="Equipment id",	length=20,  setbycreate=false},
 	{attname="OLT version",	length=14,  setbycreate=false}},
+
+[132] = { me_class_name = "**TBD** Multicast interworking VCC termination point" },
 				
 [133] = { me_class_name = "ONT Power Shedding",
 	{ attname="Restore power timer reset interval", length=2, setbycreate=false },
@@ -641,6 +673,39 @@ local omci_def = {
 	{ attname="Packets 256 to 511 Octets", length=4, setbycreate=false },
 	{ attname="Packets 512 to 1023 Octets", length=4, setbycreate=false },
 	{ attname="Packets 1024 to 1518 Octets", length=4, setbycreate=false }},
+
+[329] = { me_class_name = "Virtual Ethernet interface point",
+	{ attname="Administrative state", length=1, setbycreate=false },
+	{ attname="Operational state", length=1, setbycreate=false },
+	{ attname="Interdomain name", length=25, setbycreate=false },
+	{ attname="TCP/UDP pointer", length=2, setbycreate=false },
+	{ attname="IANA assigned port", length=2, setbycreate=false }},
+	
+[332] = { me_class_name = "Enhanced security control",
+    { attname="OLT crypto capabilities", length=16, setbycreate=false },
+    { attname="OLT random challenge table", length=17, setbycreate=false },
+    { attname="OLT challenge status", length=1, setbycreate=false },
+    { attname="ONU selected crypto capabilities", length=1, setbycreate=false },
+    { attname="ONU random challenge table", length=16, setbycreate=false },
+    { attname="ONU authentication result table", length=16, setbycreate=false },
+    { attname="ONU random challenge table", length=17, setbycreate=false },
+    { attname="OLT result status", length=1, setbycreate=false },
+    { attname="ONU authentication status", length=1, setbycreate=false },
+    { attname="Master session key name", length=16, setbycreate=false },
+    { attname="Broadcast key table", length=18, setbycreate=false },
+    { attname="Effective key length", length=2, setbycreate=false }},
+
+[334] = { me_class_name = "**TBD** Ethernet frame extended PM" },
+
+[340] = { me_class_name = "BBF TR-069 management server",
+    { attname="Administrative state", length=1, setbycreate=false },
+    { attname="ACS network address", length=2, setbycreate=false },
+    { attname="Associated tag", length=2, setbycreate=false }},
+
+[341] = { me_class_name = "**TBD** GEM port network CTP performance monitoring history data" },
+
+[345] = { me_class_name = "**TBD** XG-PON downstream management performance monitoring history data" },
+        
 }
 
 setmetatable(omci_def, mt2)
@@ -917,3 +982,4 @@ end
 -- Register the dissector
 local ether_table = DissectorTable.get( "ethertype" )
 ether_table:add(0x88B5, omciproto) 
+
